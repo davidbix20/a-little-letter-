@@ -1,0 +1,238 @@
+
+:root {
+  --cream: #F6FAFF;
+  --blush: #DCECF8;
+  --pink: #7FA9C4;
+  --rose: #587D9B;
+  --brown: #40576B;
+  --paper: #FFF9F0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+
+background-color: #70B1DB;
+
+background-image:
+  radial-gradient(circle, #F5FAFF 3px, transparent 3.5px),
+  radial-gradient(circle, #F5FAFF 3px, transparent 3.5px);
+
+background-size: 27px 41px;
+background-position:
+  6px 6px,
+  19.5px 26.5px;
+}
+
+.container {
+  max-width: 720px;
+  margin: auto;
+  padding: 55px 20px;
+  text-align: center;
+}
+
+header p {
+  font-size: 12px;
+  letter-spacing: 3px;
+  color: #193B59;
+}
+
+.tiny-heart {
+  font-size: 30px;
+  color: #193B59;
+}
+
+h1, h2 {
+  font-family: "Playfair Display", serif;
+  font-weight: 500;
+}
+
+h1 {
+  font-size: clamp(34px, 7vw, 52px);
+  color: #193B59;
+  margin: 12px 0;
+}
+
+.subtitle {
+  letter-spacing: 0;
+  font-size: 15px;
+}
+
+.letter-container {
+  margin-top: 45px;
+}
+
+#open-letter {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+
+.envelope {
+  width: 260px;
+  height: 165px;
+  background: #d8b978;
+  display: block;
+  position: relative;
+  margin: 0 auto;
+  cursor: pointer;
+  border-radius: 7px;
+  box-shadow: 0 12px 25px #9b64712b;
+  transition: transform 0.3s ease;
+}
+
+.envelope:hover {
+  transform: translateY(-5px);
+}
+
+.envelope-front {
+  position: absolute;
+  inset: 0;
+  background: #f4dfa6;
+  clip-path: polygon(
+    0 0, 50% 58%, 100% 0,
+    100% 100%, 0 100%
+  );
+  border-radius: 7px;
+}
+
+.envelope-flap {
+  position: absolute;
+  inset: 0;
+  background: #e8cb8e;
+  clip-path: polygon(0 0, 100% 0, 50% 60%);
+  transform-origin: top;
+  transition: transform 0.6s ease;
+  z-index: 2;
+}
+
+.heart-seal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--rose);
+  color: white;
+  border-radius: 50%;
+  padding: 10px 13px;
+  z-index: 3;
+  transition: opacity 0.3s ease;
+}
+
+#open-letter:checked + .envelope .envelope-flap {
+  transform: rotateX(180deg);
+}
+
+#open-letter:checked + .envelope .heart-seal {
+  opacity: 0;
+}
+
+#open-letter:focus-visible + .envelope {
+  outline: 3px solid var(--rose);
+  outline-offset: 6px;
+}
+
+.hint {
+  font-size: 13px;
+  color: #193B59;
+  margin: 22px 0;
+}
+
+.letter {
+  display: none;
+  background: var(--paper);
+  padding: 45px;
+  margin-top: 30px;
+  text-align: left;
+  border: 1px solid #efdfe0;
+  border-radius: 12px;
+  box-shadow: 0 15px 40px #9b64711c;
+  animation: appear 0.7s ease;
+}
+
+#open-letter:checked ~ .letter {
+  display: block;
+}
+
+.flower {
+  text-align: center;
+  color: var(--pink);
+  letter-spacing: 8px;
+  margin-bottom: 20px;
+}
+
+.letter h2 {
+  color: var(--rose);
+  font-size: 26px;
+  margin-bottom: 28px;
+}
+
+.pixel-hearts {
+  width: 30px;
+  height: auto;
+  display: inline-block;
+  margin-left: 5px;
+}
+
+.letter p {
+  font-size: 15px;
+  line-height: 1.95;
+  margin-bottom: 20px;
+}
+
+.signature {
+  margin-top: 35px;
+  color: var(--rose);
+}
+
+.signature p {
+  font-style: italic;
+  margin-bottom: 5px;
+}
+
+.signature span {
+  font-family: "Playfair Display", serif;
+  font-size: 23px;
+}
+
+footer {
+  margin-top: 55px;
+  font-size: 12px;
+  color: var(--pink);
+  letter-spacing: 2px;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 500px) {
+  .container {
+    padding: 35px 15px;
+  }
+
+  .letter {
+    padding: 28px 23px;
+  }
+
+  .letter h2 {
+    font-size: 23px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
